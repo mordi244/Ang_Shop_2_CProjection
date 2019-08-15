@@ -1,0 +1,9 @@
+<back-button (backUpPage)="mybackUpPage($event)"></back-button>
+<div class="card">
+    
+    <img [src]="showProd.img" alt="showProd.name" style="width:100%">
+    <h1>{{ showProd.name }}</h1>
+    <p class="price">{{showProd.price}}$</p>
+    <p>{{ showProd.description }}</p>
+    <p><button>Add to Cart</button></p>
+</div>
