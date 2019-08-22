@@ -17,8 +17,6 @@ export class CartItemComponent implements OnInit {
   }
 
   removeFromCart(productToRemove) {
-    console.log("remove from cart !! ");
-    console.log(productToRemove);
     this.cartService.removeFromCart(productToRemove);
     this.cartSize.emit(this.cartService.cart.length);
   }

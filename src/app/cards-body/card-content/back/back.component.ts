@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'back-button',
@@ -13,10 +13,7 @@ export class BackComponent {
   ngOnInit() {
   }
 
-  /* emit data to parent element when clicking the back btn*/
-  /* emit the string 'N' -> display allproducts and not speciefic product*/
   clickBack() {
-    console.log("in click back");
     this.backUpPage.emit('N');
   }
   
