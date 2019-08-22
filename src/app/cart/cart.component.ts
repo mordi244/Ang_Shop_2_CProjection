@@ -13,13 +13,9 @@ export class CartComponent implements OnInit {
   cart: Product[] = [];//all products in my cart
   constructor(private cartService:CartService) {
     this.cart = this.cartService.cart;
-    console.log("cart in cart component : ");
-    console.log(this.cart);
   }
 
   cartLength(event) {
-    console.log("removed from cart compoment");
-    console.log(event);
     this.cartSize.emit(event);
   }
   ngOnInit() {

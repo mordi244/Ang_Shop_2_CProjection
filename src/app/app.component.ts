@@ -6,13 +6,11 @@ import { CartService } from './cart.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-
-
 })
 export class AppComponent {
-  cartSize:number;
-  constructor(private cartService:CartService) {
-    
+  cartSize: number;
+  constructor(private cartService: CartService) {
+
   }
   ngOnInit() {
     console.log("app on init");

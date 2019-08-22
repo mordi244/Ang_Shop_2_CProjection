@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Product } from '../../../model/product';
-import { trigger, state, style, transition, animate, query, stagger, keyframes } from '@angular/animations';
-import { CartService } from '../../cart.service';
+import { trigger, style, transition, animate } from '@angular/animations';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -23,16 +22,14 @@ export class CardComponent implements OnInit {
   @Input() prodClicked:string;
   @Input() showProd:Product;
   @Output() prodToLoadDesc = new EventEmitter<Product>();
-  constructor(private cartService:CartService) {
+  constructor() {
   }
 
   /* emit data to parent component when clicking the product div (clickeble)*/
   clickDiv(produc) {
-    console.log("click div , cart size : "+this.cartService.cart.length);
     this.prodToLoadDesc.emit(produc);
   }
   ngOnInit() {
-    console.log("card component ngoninit...");
   }
 
 }
