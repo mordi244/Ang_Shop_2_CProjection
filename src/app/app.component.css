@@ -54,7 +54,6 @@ ul {
  .social-header {
   margin-left:90%;
  }
-  
- .header-fixed {
-
- }
+  span {
+    font-size:30px;
+  }

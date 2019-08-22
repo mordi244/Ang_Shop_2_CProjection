@@ -5,28 +5,39 @@
             <li><a href="#" (click)="onSelect($event.target.text)">Home</a></li>
             <li><a href="#" (click)="onSelect($event.target.text)">About</a></li>
             <li><a href="#" (click)="onSelect($event.target.text)">Products</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#" (click)="onSelect('Cart')">Cart ({{cartSize}})</a></li>
+            <li><a href="#" (click)="onSelect($event.target.text)">Contact</a></li>
         </ul>
     </mat-drawer>
     <div class="sidenav-content">
         <button mat-icon-button (click)="drawer.toggle()">
             <div class="icondiv">
+
                 <mat-icon>menu</mat-icon>
             </div>
         </button>
+
     </div>
     <!-- components -->
+
     <main>
         <div>
+
             <div class="social-header">
+
                 <app-social></app-social>
+
             </div>
             <app-header></app-header>
         </div>
 
         <app-home *ngIf="loadedPage === 'Home'"></app-home>
-        <app-cards-body (backUp)="backUp()" *ngIf="loadedPage === 'Products'"></app-cards-body>
+        <app-cards-body (cartNum)="cartLength($event)" (backUp)="backUp()" *ngIf="loadedPage === 'Products'">
+        </app-cards-body>
         <app-about *ngIf="loadedPage === 'About'"></app-about>
+        <app-cart (cartSize)="cartLength($event)" *ngIf="loadedPage === 'Cart'"></app-cart>
+        <app-contact *ngIf="loadedPage === 'Contact'"></app-contact>
+
         <!-- <app-social></app-social> -->
         <app-footer></app-footer>
     </main>

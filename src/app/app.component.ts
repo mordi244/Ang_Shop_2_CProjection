@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, transition, animate, query, group } from '@angular/animations';
+import { CartService } from './cart.service';
 
 
 @Component({
@@ -10,6 +10,14 @@ import { trigger, state, style, transition, animate, query, group } from '@angul
 
 })
 export class AppComponent {
+  cartSize:number;
+  constructor(private cartService:CartService) {
+    
+  }
+  ngOnInit() {
+    console.log("app on init");
+    this.cartSize = this.cartService.cart.length;
+  }
   // @Output() pageSelected = new EventEmitter<string>();
   loadedPage = 'Home';
   currentState = 'open';
@@ -22,10 +30,20 @@ export class AppComponent {
     console.log("the click event is : ");
     console.log(event);
     this.loadedPage = event;
+    console.log('the load page' + this.loadedPage);
   }
   backUp() {
     console.log("in back up !!!!!!!!");
     this.onSelect('Products');
+    this.cartSize = this.cartService.cart.length;
   }
-
+  myCartSize(event) {
+    console.log("my cart size ! ");
+    console.log(event);
+  }
+  cartLength(event) {
+    console.log("my cart length in app componebt ! ");
+    console.log(event);
+    this.cartSize = event;
+  }
 }

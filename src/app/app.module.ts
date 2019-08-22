@@ -18,7 +18,11 @@ import { CardContentComponent } from './cards-body/card-content/card-content.com
 import { BackComponent } from './cards-body/card-content/back/back.component';
 import { SocialComponent } from './social/social.component';
 import { SocialContainerComponent } from './social-container/social-container.component';
-
+import { CartComponent } from './cart/cart.component';
+import { ContactComponent } from './contact/contact.component'; 
+import { CartService } from './cart.service';
+import { DataService } from './data.service';
+import { CartItemComponent } from './cart/cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { SocialContainerComponent } from './social-container/social-container.co
     BackComponent,
     SocialComponent,
     SocialContainerComponent,
+    CartComponent,
+    ContactComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +51,7 @@ import { SocialContainerComponent } from './social-container/social-container.co
     MatSidenavModule
     
   ],
-  providers: [
+  providers: [CartService,DataService
   ],
   bootstrap: [AppComponent]
 })

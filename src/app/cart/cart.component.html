@@ -1,0 +1,8 @@
+
+<div class="container">
+    <div class="subHeader">
+      <h4>My Cart</h4>
+    </div>
+    <app-cart-item  (cartSize)="cartLength($event)" *ngFor="let product of cart" [product]="product">
+    </app-cart-item> 
+</div>

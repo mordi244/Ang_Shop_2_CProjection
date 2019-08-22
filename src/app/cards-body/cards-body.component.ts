@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate ,query, stagger, keyframes} from '@angular/animations';
-import { v1 as uuid } from 'uuid';
 import { Category } from '../../model/category';
 import { Product } from '../../model/product';
-import * as data from '../data.json';
+import { DataService } from '../data.service';
+import { CartService } from '../cart.service';
 
 
 
@@ -38,29 +38,39 @@ export class CardsBodyComponent implements OnInit {
   showProd: Product = null; //product that was clicked
   prodClicked: string = 'Y';  //flag that responsible for show product details/ products list.
   state = 'normal';
+  serviceCategories:Category[] = [];
+  @Output() cartNum = new EventEmitter<number>();
 
-  constructor() {
- 
+  constructor(private dataService:DataService , private cartService:CartService) {
+    dataService.loadProductsCatsFile();
   }
 
   ngOnInit() {
-    this.loadProductsCatsFile();
+    this.serviceCategories = this.dataService.fullCategoryArr;
+    this.categoriesNames = this.dataService.categoriesNames;
+    console.log("category names : ");
+    console.log(this.categoriesNames);
+    this.productsArr = this.dataService.productsArr;
+     //this.loadProductsCatsFile();
     this.createShowProducts('All');
+    console.log("emitting .. "+this.cartService.cart.length);
+    
+    
   }
   //load data from json file
-  loadProductsCatsFile = () => {
-    this.categoriesNames.push('All');
-    data.categories.forEach((cat: Category) => { //loop over the categories
-      cat.id = uuid(); //set id to category
-      this.fullCategoryArr.push(cat); //add category ti categories array
-      this.categoriesNames.push(cat.name); //add category name to categories name array (for combo box)
-      cat.products.forEach((prod: Product) => { //loop over the products of category
-        prod.id = uuid(); //set id to product
-        prod.categoryId = cat.id; //set the foreign key of product's categoryId to id of category
-        this.productsArr.push(prod); //add product to products array
-      });
-    });
-  }
+  // loadProductsCatsFile = () => {
+  //   this.categoriesNames.push('All');
+  //   data.categories.forEach((cat: Category) => { //loop over the categories
+  //     cat.id = uuid(); //set id to category
+  //     this.fullCategoryArr.push(cat); //add category ti categories array
+  //     this.categoriesNames.push(cat.name); //add category name to categories name array (for combo box)
+  //     cat.products.forEach((prod: Product) => { //loop over the products of category
+  //       prod.id = uuid(); //set id to product
+  //       prod.categoryId = cat.id; //set the foreign key of product's categoryId to id of category
+  //       this.productsArr.push(prod); //add product to products array
+  //     });
+  //   });
+  // }
 
 
   clickCategory(cat) {
@@ -91,6 +101,11 @@ export class CardsBodyComponent implements OnInit {
     this.prodClicked = 'Y';
     this.showProd = null;
     this.backUp.emit('Products')
+  }
+  cartLength(event) {
+    console.log("event in cart length !! ");
+    console.log(event);
+    this.cartNum.emit(event);
   }
 }
 

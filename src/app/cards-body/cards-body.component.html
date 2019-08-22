@@ -7,7 +7,7 @@
   <mat-drawer #drawer class="sidenav">
     <ul>
       <li><a href="#" (click)="clickCategory('All')">All</a></li>
-      <li *ngFor="let cat of fullCategoryArr"><a href="#" (click)="clickCategory(cat)">{{ cat.name }}</a></li>
+      <li *ngFor="let cat of serviceCategories"><a href="#" (click)="clickCategory(cat)">{{ cat.name }}</a></li>
     </ul>
   </mat-drawer>
   <div class="sidenav-content">
@@ -24,7 +24,7 @@
     <!-- <app-card [productsArr]="productsArr"></app-card> -->
     <app-card  (prodToLoadDesc)="getProduc($event)" *ngFor="let product of showProducts" [product]="product" [prodClicked]="prodClicked" >
     </app-card>
-    <app-card-content (backUp)="backUpPage()" [showProd]="showProd" *ngIf="showProd !== null"></app-card-content>
+    <app-card-content (cartNum)="cartLength($event)" (backUp)="backUpPage()" [showProd]="showProd" *ngIf="showProd !== null"></app-card-content>
     
   </div>
 </mat-drawer-container>
