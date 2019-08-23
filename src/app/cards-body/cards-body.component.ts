@@ -47,6 +47,7 @@ export class CardsBodyComponent implements OnInit {
 
   ngOnInit() {
     this.serviceCategories = this.dataService.fullCategoryArr;
+    this.categoriesNames = [];
     this.categoriesNames = this.dataService.categoriesNames;
     this.productsArr = this.dataService.productsArr;
      //this.loadProductsCatsFile();

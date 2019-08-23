@@ -7,6 +7,9 @@ export class DataService {
     productsArr: Product[] = [];//all products
     categoriesNames: string[] = [];
     loadProductsCatsFile = () => {
+      this.categoriesNames = [];
+      this.fullCategoryArr = [];
+      console.log("*****in load products data service !!! ");
         this.categoriesNames.push('All');
         data.categories.forEach((cat: Category) => { //loop over the categories
           cat.id = uuid(); //set id to category
@@ -18,5 +21,10 @@ export class DataService {
             this.productsArr.push(prod); //add product to products array
           });
         });
+        console.log("cat names array : ");
+        console.log(this.categoriesNames);
+        console.log("*********************");
+        console.log("categories array : ");
+        console.log(this.fullCategoryArr);
       }
 }
