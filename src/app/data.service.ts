@@ -9,7 +9,7 @@ export class DataService {
     loadProductsCatsFile = () => {
       this.categoriesNames = [];
       this.fullCategoryArr = [];
-      console.log("*****in load products data service !!! ");
+      this.productsArr = [];
         this.categoriesNames.push('All');
         data.categories.forEach((cat: Category) => { //loop over the categories
           cat.id = uuid(); //set id to category
@@ -18,13 +18,8 @@ export class DataService {
           cat.products.forEach((prod: Product) => { //loop over the products of category
             prod.id = uuid(); //set id to product
             prod.categoryId = cat.id; //set the foreign key of product's categoryId to id of category
-            this.productsArr.push(prod); //add product to products array
+            this.productsArr.push(prod); //add product to products array 
           });
         });
-        console.log("cat names array : ");
-        console.log(this.categoriesNames);
-        console.log("*********************");
-        console.log("categories array : ");
-        console.log(this.fullCategoryArr);
       }
 }

@@ -22,6 +22,21 @@ import { ContactComponent } from './contact/contact.component';
 import { CartService } from './cart.service';
 import { DataService } from './data.service';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { LoginComponent } from './login/login.component';
+import { UserService } from './user.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminService } from './admin.service';
+import { LocalService } from './local.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import {
+  MatToolbarModule,
+} from '@angular/material';
+import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { ManagementComponent } from './management/management.component';
+import { EditProductComponent } from './cards-body/card-content/edit-product/edit-product.component';
+import { TranslatePipe } from './lng.pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -40,6 +55,12 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     CartComponent,
     ContactComponent,
     CartItemComponent,
+    LoginComponent,
+    SubHeaderComponent,
+    ManagementComponent,
+    EditProductComponent,
+    TranslatePipe
+    
   ],
   imports: [
     BrowserModule,
@@ -47,10 +68,14 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ReactiveFormsModule,
+    MatBadgeModule,
+    MatToolbarModule,
+    ModalModule.forRoot(),
     
   ],
-  providers: [CartService,DataService
+  providers: [CartService,DataService,UserService,AdminService,LocalService
   ],
   bootstrap: [AppComponent]
 })
