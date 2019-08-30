@@ -1,23 +1,21 @@
 import { Product } from '../model/product';
 import { Category } from '../model/category';
+import { User } from '../model/user';
 
 export class CartService {
 
     cart: Product[] = []; //this is my cart array
+    user: User; // for future use
 
     //this function add product to cart list
     addToCart(productToAdd: Product) {
         this.cart.push(productToAdd);
-        console.log("product " + productToAdd.name + " added succesfully to cart.");
-        console.log("my cart products : ");
-        console.log(this.cart);
     }
 
     //this function remove product fromcart  list
     removeFromCart(productToRemove) {
         if (this.existsInCart(productToRemove) > -1) {
             this.cart.splice(this.existsInCart(productToRemove), 1);
-            console.log("product " + productToRemove.name + " has removed successfully from cart");
         }
     }
     existsInCart(product): number {

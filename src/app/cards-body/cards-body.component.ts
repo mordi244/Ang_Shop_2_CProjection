@@ -3,7 +3,6 @@ import { trigger, style, transition, animate ,query, stagger, keyframes} from '@
 import { Category } from '../../model/category';
 import { Product } from '../../model/product';
 import { DataService } from '../data.service';
-import { CartService } from '../cart.service';
 
 
 
@@ -41,7 +40,7 @@ export class CardsBodyComponent implements OnInit {
   serviceCategories:Category[] = [];
   @Output() cartNum = new EventEmitter<number>();
 
-  constructor(private dataService:DataService , private cartService:CartService) {
+  constructor(private dataService:DataService) {
     dataService.loadProductsCatsFile();
   }
 

@@ -2,8 +2,6 @@
 #contactHeader {
     text-align: center;
 }
-
-/* styling the contact form*/
 .form-row-input {
     width: 100%;
     padding: 12px 20px;
@@ -19,6 +17,19 @@ span.form-row-error {
   input.ng-invalid.ng-touched , textarea.ng-invalid.ng-touched {
     border: 1px solid red;
     }
+
+    button[type=submit],button[type=reset] {
+        background-color: rgba(31, 212, 91, 0.856);
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 4px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button[type=submit]:hover, button[type=reset]:hover{
+        background-color: #9b9b9b;
+      }
   input[type=submit],input[type=reset] {
     
     background-color: rgba(31, 212, 91, 0.856);
@@ -55,5 +66,4 @@ span.form-row-error {
       width: 50%;
       margin: auto;
   }
- 
  

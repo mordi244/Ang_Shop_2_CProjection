@@ -2,41 +2,46 @@
 <mat-drawer-container class="container" autosize>
     <mat-drawer #drawer class="sidenav">
         <ul>
-            <li><a href="#" (click)="onSelect($event.target.text)">Home</a></li>
-            <li><a href="#" (click)="onSelect($event.target.text)">About</a></li>
-            <li><a href="#" (click)="onSelect($event.target.text)">Products</a></li>
-            <li><a href="#" (click)="onSelect('Cart')">Cart ({{cartSize}})</a></li>
-            <li><a href="#" (click)="onSelect($event.target.text)">Contact</a></li>
+            <!-- <li *ngFor="let i of myMenu"><a href="#" (click)="onSelect($event.target.text)">{{ i | translate}}</a></li> -->
+            <li><a href="#" (click)="onSelect($event.target.text)">{{ logMode | translate }}</a></li>
+            <li><a href="#" (click)="onSelect($event.target.text)">{{ 'Home' | translate }}</a></li>
+            <li><a href="#" (click)="onSelect($event.target.text)">{{ 'About' | translate }} </a></li>
+            <li><a href="#" (click)="onSelect($event.target.text)">{{ 'Products' | translate }}</a></li>
+            <li *ngIf="logged === 'user'"><a href="#" (click)="onSelect('Cart')">{{ 'Cart' | translate }} ({{cartSize}})</a></li>
+            <li *ngIf="logged === 'admin'"><a href="#" (click)=onSelect($event.target.text)>{{ 'Management' | translate }}</a></li>
+            <li><a href="#" (click)="onSelect($event.target.text)">{{ 'Contact' | translate }}</a></li>
         </ul>
+
     </mat-drawer>
+
     <div class="sidenav-content">
         <button mat-icon-button (click)="drawer.toggle()">
             <div class="icondiv">
-
-                <mat-icon>menu</mat-icon>
+                <mat-icon>menu</mat-icon> 
             </div>
         </button>
+        <a href="#" (click)="changeLng($event.target.text)">English </a>
+        <a href="#" (click)="changeLng($event.target.text)">Spanish</a>
 
+        
     </div>
     <!-- components -->
-
     <main>
         <div>
-
             <div class="social-header">
-
                 <app-social></app-social>
-
             </div>
+            <app-sub-header (cartClick)="onSelect('Cart')" [cartSize]="cartSize" [user]="logged" *ngIf="logged"></app-sub-header>          
             <app-header></app-header>
         </div>
-
+        <app-login (logged)="isLogged($event)" *ngIf="loadedPage === 'Login'"></app-login>
         <app-home *ngIf="loadedPage === 'Home'"></app-home>
         <app-cards-body (cartNum)="cartLength($event)" (backUp)="backUp()" *ngIf="loadedPage === 'Products'">
         </app-cards-body>
         <app-about *ngIf="loadedPage === 'About'"></app-about>
         <app-cart (cartSize)="cartLength($event)" *ngIf="loadedPage === 'Cart'"></app-cart>
         <app-contact *ngIf="loadedPage === 'Contact'"></app-contact>
+        <app-management *ngIf="loadedPage === 'Management'"></app-management>
 
         <!-- <app-social></app-social> -->
         <app-footer></app-footer>
