@@ -3,6 +3,7 @@ import { CartService } from './cart.service';
 import { UserService } from './user.service';
 import { DataService } from './data.service';
 import { LocalService } from './local.service';
+import { AdminService } from './admin.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AppComponent {
   logMode:string = 'Login';
   lng:string = 'eng';
   constructor(private cartService: CartService,private userService:UserService
-    ,dataService:DataService ,private localService:LocalService ) {
+    ,dataService:DataService ,private localService:LocalService , private adminServie:AdminService ) {
       dataService.loadProductsCatsFile();
   }
   ngOnInit() {
@@ -38,12 +39,14 @@ export class AppComponent {
   }
 
   onSelect(event: string) {
+    console.log("on select function , user is :"+this.logged);
     this.loadedPage = event;
     console.log(this.loadedPage);
     if (event === 'Logout') {
       this.logMode = 'Login';
       this.logged = '';
       this.userService.logOutUser('user');
+      this.adminServie.logOutUser('admin');
     }
   }
   backUp() {
