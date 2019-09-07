@@ -28,7 +28,11 @@
     "hammerjs": "^2.0.8",
     "ng-bootstrap": "^1.6.3",
     "ng6-social-button": "^1.0.5",
+<<<<<<< HEAD
     "ngx-bootstrap": "^2.0.5",
+=======
+    "ngx-bootstrap": "^5.1.1",
+>>>>>>> 2f4438a3c8f9fa115c1b1dd6cee4837a86b00c8e
     "rxjs": "~6.5.2",
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",

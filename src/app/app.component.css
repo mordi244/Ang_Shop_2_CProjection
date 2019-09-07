@@ -2,6 +2,8 @@
 main {
   /* margin: 0.2% 0.2%;
   padding: 1%; */
+  margin: 1%;
+  padding: 3%;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -58,7 +60,7 @@ ul {
   }
 
  .social-header {
-  margin-left:40%;
+  margin-left:50%;
  }
   span {
     font-size:30px;

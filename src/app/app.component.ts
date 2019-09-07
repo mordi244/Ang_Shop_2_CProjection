@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { CartService } from './services/cart.service';
 import { UserService } from './services/user.service';
 import { DataService } from './services/data.service';
@@ -6,6 +7,13 @@ import { LocalService } from './services/local.service';
 import { AdminService } from './services/admin.service';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animations';
+=======
+import { CartService } from './cart.service';
+import { UserService } from './user.service';
+import { DataService } from './data.service';
+import { LocalService } from './local.service';
+import { AdminService } from './admin.service';
+>>>>>>> 2f4438a3c8f9fa115c1b1dd6cee4837a86b00c8e
 
 
 @Component({
@@ -27,7 +35,11 @@ export class AppComponent {
   logMode:string = 'Login';
   lng:string = 'eng';
   constructor(private cartService: CartService,private userService:UserService
+<<<<<<< HEAD
     ,dataService:DataService ,private localService:LocalService , private adminService:AdminService ) {
+=======
+    ,dataService:DataService ,private localService:LocalService , private adminServie:AdminService ) {
+>>>>>>> 2f4438a3c8f9fa115c1b1dd6cee4837a86b00c8e
       dataService.loadProductsCatsFile();
   }
   ngOnInit() {
@@ -45,15 +57,23 @@ export class AppComponent {
   }
 
   onSelect(event: string) {
+<<<<<<< HEAD
     console.log("fdsdfsdfsdf");
     console.log(event);
+=======
+    console.log("on select function , user is :"+this.logged);
+>>>>>>> 2f4438a3c8f9fa115c1b1dd6cee4837a86b00c8e
     this.loadedPage = event;
     console.log(this.loadedPage);
     if (event === 'Logout') {
       this.logMode = 'Login';
       this.logged = '';
       this.userService.logOutUser('user');
+<<<<<<< HEAD
       this.adminService.logOutUser('admin');
+=======
+      this.adminServie.logOutUser('admin');
+>>>>>>> 2f4438a3c8f9fa115c1b1dd6cee4837a86b00c8e
     }
   }
   backUp() {
