@@ -46,7 +46,7 @@ export class CardComponent implements OnInit,AfterContentChecked {
     // this.newProduct = this.dataService.getProduct(this.prodRouteid);
     // console.log(this.newProduct);
   }
-  ngAfterContentChecked(): void {
+  ngAfterContentChecked(): void {  
 
   }
 
