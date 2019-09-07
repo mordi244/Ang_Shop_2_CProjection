@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AdminService } from '../admin.service';
+import { AdminService } from '../services/admin.service';
 import { Category } from 'src/model/category';
 import { Product } from 'src/model/product';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-management',

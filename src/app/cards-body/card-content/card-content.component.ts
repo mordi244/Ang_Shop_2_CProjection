@@ -1,10 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/model/product';
-import { CartService } from '../../cart.service';
-import { UserService } from '../../user.service';
-import { AdminService } from 'src/app/admin.service';
+import { CartService } from '../../services/cart.service';
+import { UserService } from '../../services/user.service';
+import { AdminService } from 'src/app/services/admin.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { DataService } from 'src/app/data.service';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-card-content',
   templateUrl: './card-content.component.html',

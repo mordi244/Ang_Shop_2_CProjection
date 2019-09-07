@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { trigger, style, transition, animate ,query, stagger, keyframes} from '@angular/animations';
 import { Category } from '../../model/category';
 import { Product } from '../../model/product';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 
 
 

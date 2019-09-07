@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { CartService } from './cart.service';
-import { UserService } from './user.service';
-import { DataService } from './data.service';
-import { LocalService } from './local.service';
-import { AdminService } from './admin.service';
+import { CartService } from './services/cart.service';
+import { UserService } from './services/user.service';
+import { DataService } from './services/data.service';
+import { LocalService } from './services/local.service';
+import { AdminService } from './services/admin.service';
 import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './animations';
 

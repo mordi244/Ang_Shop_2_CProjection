@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from '../user.service';
-import { CartService } from '../cart.service';
-import { AdminService } from '../admin.service';
+import { UserService } from '../services/user.service';
+import { CartService } from '../services/cart.service';
+import { AdminService } from '../services/admin.service';
 @Component({
   selector: 'app-sub-header',
   templateUrl: './sub-header.component.html',

@@ -1,6 +1,6 @@
-import { Category } from '../model/category';
-import { Product } from '../model/product';
-import * as data from './data.json';
+import { Category } from '../../model/category';
+import { Product } from '../../model/product';
+import * as data from '../data.json';
 import { v1 as uuid } from 'uuid';
 export class DataService {
     prodId:number = 0;

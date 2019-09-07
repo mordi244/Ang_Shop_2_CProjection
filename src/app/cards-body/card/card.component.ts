@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } f
 import { Product } from '../../../model/product';
 import { trigger, style, transition, animate } from '@angular/animations';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from 'src/app/data.service';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',

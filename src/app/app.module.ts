@@ -19,14 +19,14 @@ import { SocialComponent } from './social/social.component';
 import { SocialContainerComponent } from './social-container/social-container.component';
 import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component'; 
-import { CartService } from './cart.service';
-import { DataService } from './data.service';
+import { CartService } from './services/cart.service';
+import { DataService } from './services/data.service';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
 import { LoginComponent } from './login/login.component';
-import { UserService } from './user.service';
+import { UserService } from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminService } from './admin.service';
-import { LocalService } from './local.service';
+import { AdminService } from './services/admin.service';
+import { LocalService } from './services/local.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import {
   MatToolbarModule,
@@ -34,7 +34,7 @@ import {
 import { SubHeaderComponent } from './sub-header/sub-header.component';
 import { ManagementComponent } from './management/management.component';
 import { EditProductComponent } from './cards-body/card-content/edit-product/edit-product.component';
-import { TranslatePipe } from './lng.pipe';
+import { TranslatePipe } from './pipes/lng.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { Routes, RouterModule } from '@angular/router';
 import { CartGuardService } from './services/cart-guard.service';

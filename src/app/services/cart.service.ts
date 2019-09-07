@@ -1,6 +1,6 @@
-import { Product } from '../model/product';
-import { Category } from '../model/category';
-import { User } from '../model/user';
+import { Product } from '../../model/product';
+import { Category } from '../../model/category';
+import { User } from '../../model/user';
 
 export class CartService {
   
