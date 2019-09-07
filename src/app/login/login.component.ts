@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
       console.log("dateils of users valid");
       this.userService.logInUser('user');
       this.logged.emit('user');
+      this.router.navigate(['']);
     }
     else {
       this.logged.emit('');

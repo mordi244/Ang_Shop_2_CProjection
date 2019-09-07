@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import { Category } from 'src/model/category';
 import { Product } from 'src/model/product';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-management',
@@ -16,9 +17,9 @@ export class ManagementComponent implements OnInit {
   updateProductForm:FormGroup;
   manageMode: string = 'add';
   prodId:string;
-  constructor(private adminService: AdminService) {
-    this.serviceCategories = this.adminService.serviceCategories;
-    this.serviceProducts = this.adminService.productsArr;
+  constructor(private adminService: AdminService , private dataService:DataService) {
+    this.serviceCategories = this.dataService.fullCategoryArr;
+    this.serviceProducts = this.dataService.productsArr;
     console.log("in management constructor , cat data : ");
     console.log(this.serviceCategories);
   }
@@ -86,5 +87,8 @@ export class ManagementComponent implements OnInit {
   }
   changeMode(mode) {
     this.manageMode = mode;
+  }
+  confirmForm() {
+    return confirm('Leave Form ?');
   }
 }

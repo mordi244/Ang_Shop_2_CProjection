@@ -79,4 +79,16 @@ export class AdminService {
             return 'admin';
         return '';    
     }
+    isLogged(username:string) {
+        let logged:boolean;
+        this.admins.forEach((admin) => {  
+            if (admin.username === username) {
+              logged = admin.logged;
+            }
+        });
+        return logged;
+    }
+    getUserName():string { // hardcoded
+        return this.admins[0].username;
+    }
 }

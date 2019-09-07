@@ -6,7 +6,7 @@ main {
     overflow-y: hidden;
 }
 .active {
-  background-color: red;
+  background-color: #1abc9c;
 }
 .container {
     position: absolute;

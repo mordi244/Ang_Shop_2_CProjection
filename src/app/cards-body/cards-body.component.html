@@ -25,7 +25,7 @@
     <!-- <app-card [productsArr]="productsArr"></app-card> --> 
      <app-card  (prodToLoadDesc)="getProduc($event)" *ngFor="let product of showProducts" [product]="product" [prodClicked]="prodClicked"   routerLink="{{ product.id }}">
     </app-card>
-    <app-card-content (cartNum)="cartLength($event)" (backUp)="backUpPage()"></app-card-content> 
-    <router-outlet></router-outlet>
+    <!-- <app-card-content (cartNum)="cartLength($event)" (backUp)="backUpPage()"></app-card-content>  -->
+    
   </div>
 </mat-drawer-container>

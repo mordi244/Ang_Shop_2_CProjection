@@ -4,6 +4,7 @@ import { CartService } from '../../cart.service';
 import { UserService } from '../../user.service';
 import { AdminService } from 'src/app/admin.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 @Component({
   selector: 'app-card-content',
   templateUrl: './card-content.component.html',
@@ -22,8 +23,7 @@ export class CardContentComponent implements OnInit {
   exists:string;
   @Output() cartNum = new EventEmitter<number>(); 
   newProduct: Product;
-  dataService: any;
-  constructor(private route:ActivatedRoute,private cartService:CartService , private userService:UserService,private adminService:AdminService) {
+  constructor(private dataService:DataService,private route:ActivatedRoute,private cartService:CartService , private userService:UserService,private adminService:AdminService) {
     this.logged = this.userService.isLogged('user'); // hardcoded
     this.isAdmin = this.adminService.admins[0].logged;
    // console.log(" is admin : "+this.isAdmin);
@@ -44,13 +44,12 @@ export class CardContentComponent implements OnInit {
     this.route.params.subscribe(
       (params:Params) => {
         this.idRoute = params['id'];
-        this.showProd = this.dataService.getProduct(this.idRoute);
+        console.log("the id route is ************** "+this.idRoute)
+        let idRouteStr = this.idRoute.toString();  
+        this.showProd = this.dataService.getProduct(idRouteStr);
       }
-    );
-    
-    console.log("my show prod in new func subscribe : ");
-    console.log(this.showProd);
 
+    );
   }
   // clickBack() {
   //   console.log("in click back");

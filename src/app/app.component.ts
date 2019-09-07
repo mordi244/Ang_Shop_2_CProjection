@@ -4,12 +4,18 @@ import { UserService } from './user.service';
 import { DataService } from './data.service';
 import { LocalService } from './local.service';
 import { AdminService } from './admin.service';
+import { RouterOutlet } from '@angular/router';
+import { slideInAnimation } from './animations';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  animations: [
+    slideInAnimation
+    // animation triggers go here
+  ]
 })
 export class AppComponent {
   myMenu:string[] = [
@@ -39,6 +45,8 @@ export class AppComponent {
   }
 
   onSelect(event: string) {
+    console.log("fdsdfsdfsdf");
+    console.log(event);
     this.loadedPage = event;
     console.log(this.loadedPage);
     if (event === 'Logout') {
@@ -85,6 +93,12 @@ export class AppComponent {
     }
     else this.logged = '';   
     return this.logged;
+  }
+  getCartLength():number {
+    return this.cartSize = this.cartService.cart.length;
+  }
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
 }

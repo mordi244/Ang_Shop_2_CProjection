@@ -37,24 +37,23 @@ import { EditProductComponent } from './cards-body/card-content/edit-product/edi
 import { TranslatePipe } from './lng.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { Routes, RouterModule } from '@angular/router';
+import { CartGuardService } from './services/cart-guard.service';
+import { FormGuardService } from './services/form-guard.service';
+
 
 const appRoutes: Routes = [
  { path: '' , component:HomeComponent },
  { path: 'login' , component:LoginComponent },
- { path: 'products' , component:CardsBodyComponent ,
-  children:[{
-    path : ':id',
-    component:CardContentComponent
-  }]
-},
+ { path: 'products' , component:CardsBodyComponent },
+{ path: 'products/:id' , component:CardContentComponent },
  //{ path: 'products/:id' , component:CardComponent },
  { path: 'contact' , component:ContactComponent },
- { path: 'management' , component:ManagementComponent },
+ { path: 'management' , component:ManagementComponent , canDeactivate:[FormGuardService]},
  { path: 'about' , component:AboutComponent },
- { path: 'cart' , component:CartComponent , 
+ { path: 'cart' , component:CartComponent , canActivate:[CartGuardService] , 
   children : [{
     path:':id',
-    component:CartItemComponent
+    component:CardContentComponent
   }]
  },
  { path: 'management' , component:ManagementComponent }

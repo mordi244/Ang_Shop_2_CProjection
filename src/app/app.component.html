@@ -9,11 +9,11 @@
             <li *ngIf="userLogged() === 'user'"><a href="#" (click)="onSelect('Cart')">{{ 'Cart' | translate }} ({{cartSize}})</a></li>
             <li *ngIf="userLogged() === 'admin'"><a href="#" (click)=onSelect($event.target.text)>{{ 'Management' | translate }}</a></li>
             <li><a routerLink="/contact" routerLinkActive="active" (click)="onSelect($event.target.text)">{{ 'Contact' | translate }}</a></li> -->
-            <li><a routerLink="/login">{{ logMode | translate }}</a></li>
+            <li><a routerLink="/login" routerLinkActive="active" (click)="onSelect(logMode)">{{ logMode | translate }}</a></li>
             <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">{{ 'Home' | translate }}</a></li>
             <li><a routerLink="/about" routerLinkActive="active">{{ 'About' | translate }} </a></li>
             <li><a routerLink="/products" routerLinkActive="active">{{ 'Products' | translate }}</a></li>
-            <li *ngIf="userLogged() === 'user'" routerLinkActive="active"><a routerLink="/cart">{{ 'Cart' | translate }} ({{cartSize}})</a></li>
+            <li *ngIf="userLogged() === 'user'" routerLinkActive="active"><a routerLink="/cart">{{ 'Cart' | translate }} ({{getCartLength()}})</a></li>
             <li *ngIf="userLogged() === 'admin'" routerLinkActive="active"><a routerLink="/management">{{ 'Management' | translate }}</a></li>
             <li><a routerLink="/contact" routerLinkActive="active">{{ 'Contact' | translate }}</a></li>
         </ul>
@@ -41,7 +41,6 @@
             <app-sub-header (cartClick)="onSelect('Cart')" [cartSize]="cartSize" *ngIf="logged"></app-sub-header>          
             <app-header></app-header>
         </div>
-        <button (click)="clickMyButton()">TestBtnn</button> 
         <!-- <app-login (logged)="isLogged($event)" *ngIf="loadedPage === 'Login'"></app-login> -->
         <!-- <app-cards-body (cartNum)="cartLength($event)" (backUp)="backUp()" *ngIf="loadedPage === 'Products'">
         </app-cards-body>
@@ -50,7 +49,11 @@
         <app-contact *ngIf="loadedPage === 'Contact'"></app-contact>
         <app-management *ngIf="loadedPage === 'Management'"></app-management>
         <app-home *ngIf="loadedPage === 'Home'"></app-home> -->
-        <router-outlet></router-outlet>
+        
+        <div
+        [@routerTransition]="appOutlet.isActivated ? appOutlet.activatedRoute : null">
+       <router-outlet #appOutlet="outlet"></router-outlet>
+         </div>
         <app-footer></app-footer>
     </main>
 </mat-drawer-container>
