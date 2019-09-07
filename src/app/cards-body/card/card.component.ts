@@ -36,7 +36,7 @@ export class CardComponent implements OnInit,AfterContentChecked {
   
 
   /* emit data to parent component when clicking the product div (clickeble)*/
-  clickDiv(produc) {
+  clickDiv(produc) { 
     this.prodToLoadDesc.emit(produc);
   }
   ngOnInit() {
