@@ -49,6 +49,7 @@ export class CardsBodyComponent implements OnInit {
     this.categoriesNames = [];
     this.categoriesNames = this.dataService.categoriesNames;
     this.productsArr = this.dataService.productsArr;
+    //console.log(this.productsArr);
      //this.loadProductsCatsFile();
     this.createShowProducts('All');
     

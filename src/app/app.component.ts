@@ -3,6 +3,7 @@ import { CartService } from './cart.service';
 import { UserService } from './user.service';
 import { DataService } from './data.service';
 import { LocalService } from './local.service';
+import { AdminService } from './admin.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AppComponent {
   logMode:string = 'Login';
   lng:string = 'eng';
   constructor(private cartService: CartService,private userService:UserService
-    ,dataService:DataService ,private localService:LocalService ) {
+    ,dataService:DataService ,private localService:LocalService , private adminService:AdminService ) {
       dataService.loadProductsCatsFile();
   }
   ngOnInit() {
@@ -44,6 +45,7 @@ export class AppComponent {
       this.logMode = 'Login';
       this.logged = '';
       this.userService.logOutUser('user');
+      this.adminService.logOutUser('admin');
     }
   }
   backUp() {
@@ -68,4 +70,21 @@ export class AppComponent {
     this.localService.changeLng(event);
     console.log("lng : "+this.lng);
   }
+  clickMyButton() {
+    console.log("testing btn");
+    console.log("logged is : "+this.logged);
+  }
+  userLogged():string {
+    if (this.userService.checkLogged() !== '') {
+      this.logged = this.userService.checkLogged();
+      this.logMode = 'Logout';
+    }
+    else if (this.adminService.checkLogged() !== '') {
+      this.logged = this.adminService.checkLogged();
+      this.logMode = 'Logout';
+    }
+    else this.logged = '';   
+    return this.logged;
+  }
+
 }

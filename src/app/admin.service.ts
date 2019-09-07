@@ -74,4 +74,9 @@ export class AdminService {
             });
         });
     }
+    checkLogged():string {
+        if (this.admins[0].logged)
+            return 'admin';
+        return '';    
+    }
 }

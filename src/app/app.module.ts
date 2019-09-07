@@ -36,7 +36,31 @@ import { ManagementComponent } from './management/management.component';
 import { EditProductComponent } from './cards-body/card-content/edit-product/edit-product.component';
 import { TranslatePipe } from './lng.pipe';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { Routes, RouterModule } from '@angular/router';
 
+const appRoutes: Routes = [
+ { path: '' , component:HomeComponent },
+ { path: 'login' , component:LoginComponent },
+ { path: 'products' , component:CardsBodyComponent ,
+  children:[{
+    path : ':id',
+    component:CardContentComponent
+  }]
+},
+ //{ path: 'products/:id' , component:CardComponent },
+ { path: 'contact' , component:ContactComponent },
+ { path: 'management' , component:ManagementComponent },
+ { path: 'about' , component:AboutComponent },
+ { path: 'cart' , component:CartComponent , 
+  children : [{
+    path:':id',
+    component:CartItemComponent
+  }]
+ },
+ { path: 'management' , component:ManagementComponent }
+
+
+];
 
 @NgModule({
   declarations: [
@@ -73,6 +97,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     MatBadgeModule,
     MatToolbarModule,
     ModalModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
     
   ],
   providers: [CartService,DataService,UserService,AdminService,LocalService

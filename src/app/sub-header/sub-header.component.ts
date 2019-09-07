@@ -19,12 +19,13 @@ export class SubHeaderComponent implements OnInit {
   constructor(private userService:UserService , private cartService:CartService) {
    this.name = this.userService.getUserName();
    this.cartnum = this.cartService.cart.length;
+   if (this.userService.isLogged) {
+    this.logged = 'user';
+   }
   }
   clickOnCart() {
     this.cartClick.emit('Cart');
-
     console.log("click on cart icon. cart items : "+this.cartnum);
-
   }  
 
   ngOnInit() {

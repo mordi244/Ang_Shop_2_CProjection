@@ -5,7 +5,9 @@ main {
     overflow-x: hidden;
     overflow-y: hidden;
 }
-
+.active {
+  background-color: red;
+}
 .container {
     position: absolute;
     top:0;

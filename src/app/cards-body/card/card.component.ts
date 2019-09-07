@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, AfterContentChecked } from '@angular/core';
 import { Product } from '../../../model/product';
 import { trigger, style, transition, animate } from '@angular/animations';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'src/app/data.service';
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -17,19 +19,35 @@ import { trigger, style, transition, animate } from '@angular/animations';
   
 })
 
-export class CardComponent implements OnInit {
+export class CardComponent implements OnInit,AfterContentChecked {
+ 
   @Input() product:Product;
   @Input() prodClicked:string;
   @Input() showProd:Product;
   @Output() prodToLoadDesc = new EventEmitter<Product>();
-  constructor() {
+  prodRouteid:string;
+  productsArr:Product[] = [];
+  newProduct:Product;
+  constructor(private route:ActivatedRoute , private dataService:DataService) {
+    this.productsArr = this.dataService.productsArr;
+  
   }
+
+  
 
   /* emit data to parent component when clicking the product div (clickeble)*/
   clickDiv(produc) {
     this.prodToLoadDesc.emit(produc);
   }
   ngOnInit() {
+    // this.prodRouteid = this.route.snapshot.params['id'];
+    // console.log("the id in the route : "+this.prodRouteid);
+    // console.log("my product after getting it with id : ");
+    // this.newProduct = this.dataService.getProduct(this.prodRouteid);
+    // console.log(this.newProduct);
+  }
+  ngAfterContentChecked(): void {
+
   }
 
 }

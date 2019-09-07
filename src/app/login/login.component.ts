@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from '../user.service';
 import { AdminService } from '../admin.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   @Output() logged = new EventEmitter<string>();
-  constructor(private userService:UserService , private adminService:AdminService) {
+  constructor(private router:Router,private userService:UserService , private adminService:AdminService) {
     console.log("my users : ");
     console.log(this.userService.users);
    }
@@ -23,6 +24,9 @@ export class LoginComponent implements OnInit {
     if (this.adminService.validateAdmin(formData.form.value.username,formData.form.value.password)) {
       console.log("admin validation ok");
       this.adminService.logInUser('admin');
+      this.router.navigate(['']);
+      
+
       this.logged.emit('admin');
     }
     else if (this.userService.validateUserAndPass(formData.form.value.username,formData.form.value.password)) {

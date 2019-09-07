@@ -49,5 +49,10 @@ export class UserService {
     getUserName():string { // hardcoded
         return this.users[0].username;
     }
+    checkLogged():string {
+        if (this.users[0].logged)
+            return 'user';
+        return '';    
+    }
     
 }
