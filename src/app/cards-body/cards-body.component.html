@@ -17,14 +17,15 @@
       Categories
     </button>
   </div>
-  <div class="container" [@addProduct]  >
+  <!-- <div class="container" [@addProduct]  > -->
+  <div class="container"   >
     <div *ngIf="prodClicked === 'N'" class="subHeader">
       <h4>Buy our Products</h4>
     </div>
-    <!-- <app-card [productsArr]="productsArr"></app-card> -->
-    <app-card  (prodToLoadDesc)="getProduc($event)" *ngFor="let product of showProducts" [product]="product" [prodClicked]="prodClicked" >
+    <!-- <app-card [productsArr]="productsArr"></app-card> --> 
+     <app-card  (prodToLoadDesc)="getProduc($event)" *ngFor="let product of showProducts" [product]="product" [prodClicked]="prodClicked"   routerLink="{{ product.id }}">
     </app-card>
-    <app-card-content (cartNum)="cartLength($event)" (backUp)="backUpPage()" [showProd]="showProd" *ngIf="showProd !== null"></app-card-content>
+    <!-- <app-card-content (cartNum)="cartLength($event)" (backUp)="backUpPage()"></app-card-content>  -->
     
   </div>
 </mat-drawer-container>

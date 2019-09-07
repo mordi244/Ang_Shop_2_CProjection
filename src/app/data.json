@@ -65,6 +65,24 @@
                 }
                 
              ]
+        },
+        {
+            "name": "Cameras",
+            "products" : [
+                
+             ]
+        },
+        {
+            "name": "Printers",
+            "products" : [
+                
+             ]
+        },
+        {
+            "name": "Cellphones",
+            "products" : [
+                
+             ]
         }
     ]
 }

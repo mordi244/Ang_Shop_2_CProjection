@@ -1,5 +1,7 @@
 
 <div [@addProduct] *ngIf="prodClicked === 'Y'" class="card" (click)="clickDiv(product)"> 
+<!-- <div *ngIf="prodClicked === 'Y'" class="card" (click)="clickDiv(product)">  -->
+<!-- <div *ngIf="prodClicked === 'Y'" class="card">  -->
         <div class="header">
             <span class="productName">{{ product.name }}</span>
             <span class="productPrice">{{ product.price }}$</span>
@@ -13,5 +15,6 @@
             <p>{{ product.description }}</p>
         </div>
 </div>
+
 
 

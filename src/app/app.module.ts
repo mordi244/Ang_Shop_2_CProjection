@@ -19,9 +19,47 @@ import { SocialComponent } from './social/social.component';
 import { SocialContainerComponent } from './social-container/social-container.component';
 import { CartComponent } from './cart/cart.component';
 import { ContactComponent } from './contact/contact.component'; 
-import { CartService } from './cart.service';
-import { DataService } from './data.service';
+import { CartService } from './services/cart.service';
+import { DataService } from './services/data.service';
 import { CartItemComponent } from './cart/cart-item/cart-item.component';
+import { LoginComponent } from './login/login.component';
+import { UserService } from './services/user.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AdminService } from './services/admin.service';
+import { LocalService } from './services/local.service';
+import { MatBadgeModule } from '@angular/material/badge';
+import {
+  MatToolbarModule,
+} from '@angular/material';
+import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { ManagementComponent } from './management/management.component';
+import { EditProductComponent } from './cards-body/card-content/edit-product/edit-product.component';
+import { TranslatePipe } from './pipes/lng.pipe';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { Routes, RouterModule } from '@angular/router';
+import { CartGuardService } from './services/cart-guard.service';
+import { FormGuardService } from './services/form-guard.service';
+
+
+const appRoutes: Routes = [
+ { path: '' , component:HomeComponent },
+ { path: 'login' , component:LoginComponent },
+ { path: 'products' , component:CardsBodyComponent },
+{ path: 'products/:id' , component:CardContentComponent },
+ //{ path: 'products/:id' , component:CardComponent },
+ { path: 'contact' , component:ContactComponent },
+ { path: 'management' , component:ManagementComponent , canDeactivate:[FormGuardService]},
+ { path: 'about' , component:AboutComponent },
+ { path: 'cart' , component:CartComponent , canActivate:[CartGuardService] , 
+  children : [{
+    path:':id',
+    component:CardContentComponent
+  }]
+ },
+ { path: 'management' , component:ManagementComponent }
+
+
+];
 
 @NgModule({
   declarations: [
@@ -40,6 +78,12 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     CartComponent,
     ContactComponent,
     CartItemComponent,
+    LoginComponent,
+    SubHeaderComponent,
+    ManagementComponent,
+    EditProductComponent,
+    TranslatePipe
+    
   ],
   imports: [
     BrowserModule,
@@ -47,10 +91,15 @@ import { CartItemComponent } from './cart/cart-item/cart-item.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ReactiveFormsModule,
+    MatBadgeModule,
+    MatToolbarModule,
+    ModalModule.forRoot(),
+    RouterModule.forRoot(appRoutes)
     
   ],
-  providers: [CartService,DataService
+  providers: [CartService,DataService,UserService,AdminService,LocalService
   ],
   bootstrap: [AppComponent]
 })
